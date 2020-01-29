@@ -23,9 +23,46 @@
 
 ## tomcat版本与支持的规范
     http://tomcat.apache.org/whichversion.html
+    这些规范同样可以在tomcat_home/lib下找到，例如servlet-api.jar/META-INF/MANIFEST.MF中可以看到描述：
+        Name: javax/servlet/
+        Implementation-Title: javax.servlet
+        Implementation-Vendor: Apache Software Foundation
+        Implementation-Version: 4.0.FR
+        Specification-Title: Java API for Servlets
+        Specification-Vendor: Sun Microsystems, Inc.
+        Specification-Version: 4.0
+        
+    关于jar包中manifest的更多信息可以参考oracle文档
+    https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jar.html#BGBFFFGG
+    
+    关于JavaEE 8规范可以参考github
+    https://javaee.github.io/javaee-spec/javadocs/
+## tomcat目录结构
+
+    PowerShell下命令
+    PS D:\soft\apache-tomcat-9.0.30> Get-ChildItem -Recurse -Directory -Depth 0
+    
+        目录: D:\soft\apache-tomcat-9.0.30
+    
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2020/1/29     15:47                bin         停止、启动脚本
+    d-----        2020/1/29     15:47                conf        相关配置
+    d-----        2020/1/29     15:47                lib         tomcat运行环境依赖jar包
+    d-----        2019/12/7     16:42                logs        默认日志存放目录
+    d-----        2020/1/29     15:47                temp        临时文件目录
+    d-----        2020/1/29     15:47                webapps     tomcat应用部署目录
+    d-----        2019/12/7     16:42                work        web应用JSP代码编译成的servlet临时目录
+
+## 启动脚本 批处理命令与shell
+    参考资料中讲的很详细，不用造轮子了
+    脚本主要作用就是找到tomcat的可执行文件，设置运行环境(环境变量、JVM参数等)并启动
 
 
 
-
+## 参考资料
+* tomcat架构解析 刘光瑞 著 2017/05
+* tomcat内核设计剖析 汪建 著 2017/06
 
 
