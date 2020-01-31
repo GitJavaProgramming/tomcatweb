@@ -9,6 +9,7 @@ import java.util.Properties;
 
 /**
  * 获取系统属性、环境变量、tomcat属性
+ * 参考 org.apache.catalina.util.ServerInfo
  * 各属性意义参考相关文档
  */
 public class FirstServlet extends javax.servlet.http.HttpServlet {

@@ -58,6 +58,31 @@
 ## 启动脚本 批处理命令与shell
     参考资料中讲的很详细，不用造轮子了
     脚本主要作用就是找到tomcat的可执行文件，设置运行环境(环境变量、JVM参数等)并启动
+    
+    Server启动时序
+    --Bootstrap.main
+    --init
+    --Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
+    -- public Catalina() {
+           setSecurityProtection(); // 双重检查单例设计
+           ExceptionUtils.preload(); // NO-OP
+       }
+    -- catalinaDaemon根据command(start,started等)执行。org.apache.catalina.startup.Catalina调用load配置信息并使用
+       createStartDigester()创建Digester解析conf/server.xml得到Server，Service，Connnector，Engine，Host，Context
+       conf/server.xml中配置的几个监听器也会实例化
+       然后就是server start
+    -- 默认的Server是StandardServer往上追溯它的顶层接口为Lifecycle,同时继承了LifecycleBase。LifecycleBase为StandardServer
+      提供addLifecycleListener(LifecycleListener listener)方法的默认实现，调用addLifecycleListener可以注册监听器（从功能
+      上讲，只要是Lifecycle的实现类，就是一个事件源--可以注册，查找，删除监听器以及触发事件），监听器监听（定义好的）事件，
+      当事件源触发事件时，监听器需要做相应事件的处理（参考Lifecycle LifecycleEvent源码 Lifecycle源码中的圈圈图很好玩~~）
+      LifecycleState事件状态，圈圈图就是这个类的状态转换图  
+      
+      这里有个疑问fireLifecycleEvent方法并没有在Lifecycle中定义而是在实现的抽象类LifecycleBase中定义，其他继承了Lifecycle
+      的子接口都是通过继承LifecycleMBeanBase来增加fireLifecycleEvent功能，为什么要分成Lifecycle和LifecycleBase？？将添加、
+      查找、删除监听器与触发事件分离？？
+     
+    例如 启动时Tomcat Catalina log打印的日志VersionLoggerListener.log调用时序
+    -- LifecycleBase.init--setStateInternal--fireLifecycleEvent(Lifecycle.BEFORE_INIT_EVENT)--VersionLoggerListener.log 
 
 ## tomcat整体架构
     参考资料写这么详细，感觉没我啥事了，待总结时模拟一个简单的tomcat吧
