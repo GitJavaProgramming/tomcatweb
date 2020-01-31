@@ -79,7 +79,7 @@
       
       这里有个疑问fireLifecycleEvent方法并没有在Lifecycle中定义而是在实现的抽象类LifecycleBase中定义，其他继承了Lifecycle
       的子接口都是通过继承LifecycleMBeanBase来增加fireLifecycleEvent功能，为什么要分成Lifecycle和LifecycleBase？？将添加、
-      查找、删除监听器与触发事件分离？？
+      查找、删除监听器与触发事件分离？？JMX？？后续补充
      
     例如 启动时Tomcat Catalina log打印的日志VersionLoggerListener.log调用时序
     -- LifecycleBase.init--setStateInternal--fireLifecycleEvent(Lifecycle.BEFORE_INIT_EVENT)--VersionLoggerListener.log 
@@ -96,7 +96,8 @@
 
 
 ## 参考资料
-* tomcat架构解析 刘光瑞 著 2017/05
+* 深入剖析tomcat 中文版
+* tomcat架构解析 刘光瑞 著 2017/05 
 * tomcat内核设计剖析 汪建 著 2017/06
 
 
