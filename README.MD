@@ -97,7 +97,10 @@
         请求响应（报文格式--请求行【请求方法、URI、协议版本】 请求首部 实体主体）
         无状态（web服务器依靠session、客户端cookie机制维护连接状态）
         应用层（传输层建立TCP连接）
-    
+    JavaWeb与Servlet规范
+    servlet服务器端脚本，用于处理请求与响应；Javaweb容器都应该实现servlet规范，对http请求做处理并响应
+    Servlet目前规范4.0
+## session与cookie
 
 
 
@@ -105,5 +108,6 @@
 * 深入剖析tomcat 中文版
 * tomcat架构解析 刘光瑞 著 2017/05 
 * tomcat内核设计剖析 汪建 著 2017/06
-
+* Servlet规范
+* JMX规范
 
