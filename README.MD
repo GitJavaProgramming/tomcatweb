@@ -99,7 +99,8 @@
         应用层（传输层建立TCP连接）
     JavaWeb与Servlet规范
     servlet服务器端脚本，用于处理请求与响应；Javaweb容器都应该实现servlet规范，对http请求做处理并响应
-    Servlet目前规范4.0
+    Servlet目前规范4.0   id-->315 340 369
+    https://jcp.org/en/jsr/detail?id=369
 ## session与cookie
 
 

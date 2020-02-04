@@ -21,12 +21,19 @@
     </build>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
         <!-- 引入lombox省去getter setter -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
         </dependency>
+        <!-- junit测试 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
