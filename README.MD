@@ -101,8 +101,17 @@
     servlet服务器端脚本，用于处理请求与响应；Javaweb容器都应该实现servlet规范，对http请求做处理并响应
     Servlet目前规范4.0   id-->315 340 369
     https://jcp.org/en/jsr/detail?id=369
+## tomcat日志管理
+    tomcat系统内日志 class DirectJDKLog implements Log
+    tomcat客户端访问日志 
+        接口org.apache.catalina.AccessLog 
+        实现类JDBCAccessLogValve AbstractAccessLogValve AccessLogAdapter
+    org.apache.tomcat.util.res.StringManager 统一日志国际化处理器 单例
 ## session与cookie
-
+    http请求/响应头中带cookie信息
+    HttpRequest getSession 获取session
+    org.apache.catalina.Store接口 session管理器 抽象类StoreBase实现Store，它默认两个子类JDBCStore FileStore
+    Store StoreBase类图参考resources下的UML
 
 
 ## 参考资料
