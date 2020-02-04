@@ -112,6 +112,7 @@
     HttpRequest getSession 获取session
     org.apache.catalina.Store接口 session管理器 抽象类StoreBase实现Store，它默认两个子类JDBCStore FileStore
     Store StoreBase类图参考resources下的UML
+## tomcat类加载器
 
 
 ## 参考资料

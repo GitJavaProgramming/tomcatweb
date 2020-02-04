@@ -1,2 +1,6 @@
 # Default ignored files
 /workspace.xml
+../out
+../target
+../.idea
+../tomcatweb.iml
