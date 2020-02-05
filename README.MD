@@ -113,7 +113,15 @@
     org.apache.catalina.Store接口 session管理器 抽象类StoreBase实现Store，它默认两个子类JDBCStore FileStore
     Store StoreBase类图参考resources下的UML
 ## tomcat类加载器
-
+    类加载器：在java文件被编译成字节码文件，需要使用时需要加载进内存。
+    Java类加载：双亲委派模型、全盘负责机制
+        模型：
+        根加载器<--扩展类加载器<--系统类加载器（ClassLoader.getSystemClassLoader() // CallerSensitive）
+        全盘负责：
+        组合类时，引用的类，依赖的类使用一样的加载器，除非显示指定使用另一个加载器
+    自定义类加载器（继承ClassLoader）可以沿用双亲委派模型（只重写findClass）也可以打破双亲委派模型（重写loadClass、findClass）
+    参考代码示例：
+    
 
 ## 参考资料
 * 深入剖析tomcat 中文版
