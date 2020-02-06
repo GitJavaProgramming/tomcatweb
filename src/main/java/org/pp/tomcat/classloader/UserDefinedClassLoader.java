@@ -23,7 +23,7 @@ public class UserDefinedClassLoader extends ClassLoader {
 
     public UserDefinedClassLoader(ClassLoader parent, String name) {
         super(parent);
-        setClasspath(getSystemResource("").getPath());
+        setClasspath(getSystemResource("").getPath()); // 设置需要加载的类的路径
         this.name = name;
     }
 
