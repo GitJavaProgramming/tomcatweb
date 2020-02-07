@@ -102,7 +102,34 @@
     Servlet目前规范4.0   id-->315 340 369
     https://jcp.org/en/jsr/detail?id=369
 ## tomcat日志管理
-    tomcat系统内日志 class DirectJDKLog implements Log
+    tomcat系统内日志 class DirectJDKLog implements Log 使用jdk的日志框架
+    java.util.logging.LogManager.readConfiguration()
+    -- String cname = System.getProperty("java.util.logging.config.class");
+    -- String fname = System.getProperty("java.util.logging.config.file");
+    -- 读取配置文件信息，添加日志处理器 LoggerManager.contexts()，处理器UML见resource文件夹
+    -- 解答第一个问题控制台日志乱码
+        1 logging.properties中配置的java.util.logging.ConsoleHandler.encoding = GBK
+        2 Hander.setEncoding()
+        3 if (encoding == null) {
+            writer = new OutputStreamWriter(output);
+          } else {
+            writer = new OutputStreamWriter(output, encoding);
+          }
+        4 public OutputStreamWriter(OutputStream out) {
+              super(out);
+              try {
+                  se = StreamEncoder.forOutputStreamWriter(out, this, (String)null);
+              } catch (UnsupportedEncodingException e) {
+                  throw new Error(e);
+              }
+          }
+        5 public static StreamEncoder forOutputStreamWriter(OutputStream var0, Object var1, String var2) throws UnsupportedEncodingException {
+              String var3 = var2;
+              if (var2 == null) {
+                  var3 = Charset.defaultCharset().name();
+              }
+              ...
+          }
     tomcat客户端访问日志 
         接口org.apache.catalina.AccessLog 
         实现类JDBCAccessLogValve AbstractAccessLogValve AccessLogAdapter
