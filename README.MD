@@ -148,7 +148,11 @@
         组合类时，引用的类，依赖的类使用一样的加载器，除非显示指定使用另一个加载器
     自定义类加载器（继承ClassLoader）可以沿用双亲委派模型（只重写findClass）也可以打破双亲委派模型（重写loadClass、findClass）
     参考代码示例：
-    
+
+## Container and Service
+    查看UML类图
+    Container--Pipeline  管道抽象 与 阀门处理链
+    Service--Mapper   请求地址路由
 
 ## 参考资料
 * 深入剖析tomcat 中文版
